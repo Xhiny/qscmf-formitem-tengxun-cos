@@ -1,0 +1,33 @@
+{
+  "name": "quansitech/qscmf-formitem-tengxun-cos",
+  "type": "library",
+  "description": "qscmf form item cos",
+  "license": "MIT",
+  "authors": [
+  	{
+  		"name": "jack",
+  		"email": "958691165@qq.com"
+  	}
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.2.0",
+    "tiderjian/think-core": ">=11.0",
+    "guzzlehttp/guzzle": "^6.2"
+  },
+  "autoload": {
+  	"psr-4": {
+  		"FormItem\\TengxunCos\\": "src/"
+  	}
+  },
+  "extra":{
+    "qscmf": {
+      "providers": [
+        "FormItem\\TengxunCos\\TengxunCosProvider"
+      ]
+    },
+    "branch-alias":{
+      "dev-master":"1.0.x-dev"
+    }
+  }
+}
