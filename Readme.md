@@ -1,15 +1,19 @@
 # FormBuilder腾讯云cos上传组件
 
 ## 用法
-### 1.配置
-#### 1.1在env文件中加入
+### 1.安装及配置
+#### 1.1安装
+```shell script
+composer install quansitech/qscmf-formitem-tengxun-cos
+```
+#### 1.2在env文件中加入
 ```dotenv
 COS_SECRETID=[腾讯云api secretid]
 COS_SECRETKEY=[腾讯云api secretkey]
 COS_HOST=[cos存储地址]
 ```
 
-#### 1.2在config.php中对应的上传类型更改配置
+#### 1.3在config.php中对应的上传类型更改配置
 示例
 ```php
 'UPLOAD_TYPE_IMAGE' => array(
