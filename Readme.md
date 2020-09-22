@@ -4,7 +4,7 @@
 ### 1.安装及配置
 #### 1.1安装
 ```shell script
-composer install quansitech/qscmf-formitem-tengxun-cos
+composer require quansitech/qscmf-formitem-tengxun-cos
 ```
 #### 1.2在env文件中加入
 ```dotenv
