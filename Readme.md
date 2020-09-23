@@ -34,6 +34,8 @@ COS_HOST=[cos存储地址]
 ```
 
 ### 2.使用
+
+#### 上传
 ```php
 $builder=new FormBuilder();
 $builder
@@ -44,3 +46,15 @@ $builder
     ->display();
 ```
 默认采用image和file类型上传，可通过定义data-url参数来设置需要的类型
+
+#### 获取文件url
+```php
+/** 
+ * @var int $file_id file_pic_id
+ * @var int $expire 过期时间 
+*/
+$url=\FormItem\TengxunCos\TengxunCos::getInstance()->getFileUrl($file_id,$expire);
+```
+
+#### 支持私有读bucket
+在上传文件配置中加入 'security' => true,即可
