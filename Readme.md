@@ -47,7 +47,9 @@ $builder
 ```
 默认采用image和file类型上传，可通过定义data-url参数来设置需要的类型
 
-#### 获取文件url
+### 3.升级
+#### 升级至1.1.0
+##### 获取文件url
 ```php
 /** 
  * @var int $file_id file_pic_id
@@ -56,5 +58,5 @@ $builder
 $url=\FormItem\TengxunCos\TengxunCos::getInstance()->getFileUrl($file_id,$expire);
 ```
 
-#### 支持私有读bucket
+##### 支持私有读bucket
 在上传文件配置中加入 'security' => true,即可
