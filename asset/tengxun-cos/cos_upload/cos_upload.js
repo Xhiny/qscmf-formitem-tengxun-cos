@@ -2,7 +2,7 @@
 
 function cos_set_param_upload(up,filename,ret,policyGetUrl,file){
 
-    $.get(policyGetUrl).then(function (res){
+    $.get(policyGetUrl+'?title='+encodeURIComponent(filename)).then(function (res){
 
         if (up.runtime === 'html4') {
             up.setOption('url', res.url + '?sign=' + encodeURIComponent(authorization));

@@ -70,7 +70,13 @@ class TengxunCosController extends Controller
 
         $config = C('UPLOAD_TYPE_' . strtoupper($type));
         $host = $config['cos_host']; //"";
-        $dir=$this->_genCosObjectName($config);
+
+        $ext='';
+        if (I('get.title') && strpos(I('get.title'),'.')!==false){
+            $ext = '.'.pathinfo(urldecode(I('get.title')),PATHINFO_EXTENSION);
+        }
+
+        $dir=$this->_genCosObjectName($config,$ext);
 
         $pathname=$dir;
         substr($pathname, 0, 1) != '/' && ($pathname = '/' . $pathname);
