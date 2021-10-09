@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>React & Webpack</title>
+    </head>
+    <body>
+        <div id="upload">
+            <button>上传</button>
+        </div>
+        <script>
+
+                var opt = {
+                    value: [],
+                    listType: 'text',
+                    policyUrl: 'http://donate-asst.tunnel.t4tstudio.com/extends/TengxunCos/policyGet/type/image',
+                    maxCount: 2,
+                    showUploadList: true,
+                    crop: {
+                        aspect: 1/1
+                    },
+                    onChange: function(files){ console.log(files); }
+                };
+
+                CosUploader(document.getElementById('upload'), opt);
+        </script>
+    </body>
+</html>

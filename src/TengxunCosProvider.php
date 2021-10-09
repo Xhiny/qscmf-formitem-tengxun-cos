@@ -23,6 +23,7 @@ class TengxunCosProvider implements Provider,LaravelProvider
         RegisterContainer::registerFormItem('files_cos', FilesCos::class);
 
         RegisterContainer::registerSymLink(WWW_DIR . '/Public/tengxun-cos', __DIR__ . '/../asset/tengxun-cos');
+        RegisterContainer::registerSymLink(WWW_DIR . '/Public/tengxun-cos-uploader', __DIR__ . '/../js/dist');
         RegisterContainer::registerController('extends','TengxunCos',TengxunCosController::class);
     }
 

@@ -47,7 +47,61 @@ $builder
 ```
 默认采用image和file类型上传，可通过定义data-url参数来设置需要的类型
 
+
+
+#### 前端组件
+
+在页面加载js文件
+
+```html
+<script type="text/javascript" src="__PUBLIC__/tengxun-cos-uploader/qs-cos-upload.js"></script>
+```
+
+用法:
+
+```javascript
+<body>
+    <div id="upload">
+        <button>上传</button>
+	</div>
+	<script>
+        var opt = {
+            value: [
+                {
+                    file_id: 36,
+                    name: '测试.jpg', 
+                    thumbUrl: "https:\/\/demo.test\/61616c4957275_thumb.png",
+                    file_url: "https:\/\/demo.test\/61616c4957275.png"
+                }
+            ],
+            listType: 'text',
+            policyUrl: 'http://demo.test/extends/TengxunCos/policyGet/type/image',
+            maxCount: 1,
+            showUploadList: false,
+            onChange: function(files){ console.log(files); }
+        };
+
+        CosUploader(document.getElementById('upload'), opt);
+	</script>
+</body>
+```
+
+配置项说明:
+
+| 配置项         | 类型                                                     | 说明                                                         | 默认值                                   |
+| -------------- | -------------------------------------------------------- | ------------------------------------------------------------ | ---------------------------------------- |
+| value          | array                                                    | 初始化fileList, file 的属性有 name 文件名称， file_id 文件id, thumbUrl 缩略图, file_url 文件的地址 | []                                       |
+| listType       | string                                                   | [antd说明文档](https://ant.design/components/upload-cn/)     | picture-card                             |
+| policyUrl      | string                                                   | 获取cos上传策略地址                                          | /extends/TengxunCos/policyGet/type/image |
+| maxCount       | number                                                   | [antd说明文档](https://ant.design/components/upload-cn/)     | 1                                        |
+| showUploadList | [antd说明文档](https://ant.design/components/upload-cn/) | [antd说明文档](https://ant.design/components/upload-cn/)     | true                                     |
+| onChange       | callback                                                 | 文件上传完成触发change回调，返回当前文件列表，文件列表格式：[{file_id:1, file_url:'url'}] |                                          |
+| crop           | object                                                   | [antd-img-crop说明文档](https://github.com/nanxiaobei/antd-img-crop) | false                                    |
+
+
+
 ### 3.升级
+
 #### 升级至1.1.0
 ##### 获取文件url
 ```php
