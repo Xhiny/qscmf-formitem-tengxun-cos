@@ -81,7 +81,7 @@
                         if (info.status == 200)
                         {
                             var response = JSON.parse(info.response);
-                            var file_id = $('input[name="{$form.name}"]').val();
+                            var file_id = $('#preview_{$gid} input[name="{$form.name}"]').val();
                             if(file_id){
                                 $('#preview_{$gid} input').attr('value', file_id + ',' + response.file_id);
                             }
