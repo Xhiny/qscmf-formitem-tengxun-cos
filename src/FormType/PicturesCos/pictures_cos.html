@@ -38,7 +38,6 @@
                         mime_types : [ //只允许上传图片
                         { title : "Image files", extensions : "jpg,gif,png,bmp,jpeg" }, 
                         ],
-                        prevent_duplicates : true //不允许选取重复文件
                     },
 
                     init: { 
@@ -75,12 +74,12 @@
                             if (info.status == 200)
                             {
                                 var response = JSON.parse(info.response);
-                                var file_id = $('input[name="{$form.name}"]').val();
+                                var file_id = $('#preview_{$gid} input[name="{$form.name}"]').val();
                                 if(file_id){
-                                    $('input[name="{$form.name}"]').val(file_id + ',' + response.file_id);
+                                    $('#preview_{$gid} input[name="{$form.name}"]').val(file_id + ',' + response.file_id);
                                 }
                                 else{
-                                    $('input[name="{$form.name}"]').val(response.file_id);
+                                    $('#preview_{$gid} input[name="{$form.name}"]').val(response.file_id);
                                 }
                                 
                                 $('#preview_{$gid}').append('<span class="img-box"><img class="img" src="' + response.file_url + '" data-id="' + response.file_id + '"><i class="fa fa-times-circle remove-picture"></i></span>');
