@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Upload } from 'antd';
 import ReactDOM from "react-dom";
 import ImgCrop from 'antd-img-crop';
@@ -25,6 +25,7 @@ function Uploader({value, maxCount, listType = "picture-card",showUploadList, cr
     const [ cosData, setCosData ] = useState(initCosData);
     const [ fileList, setFileList ] = useState([]);
     const [ key, setKey ] = useState('');
+    const uploadRef = useRef();
     
     useEffect(() => {
         const files = value.map(item => {
@@ -68,11 +69,16 @@ function Uploader({value, maxCount, listType = "picture-card",showUploadList, cr
                 'Content-Type': '',
                 success_action_redirect: cosData.params.success_action_redirect
             },
-            onChange: ({ fileList: newFileList }) => {
+            onChange: ({ file: file, fileList: newFileList }) => {
                 setFileList(newFileList);
-                const uploadList = newFileList.filter(item => item.percent !== 100 || typeof item.response === 'undefined');
+                const uploadList = newFileList.filter(item => item.status !== 'error' && item.status !== 'done');
                 if(onChange && uploadList.length === 0){
-                    onChange(newFileList.map(item => item.response));
+                    onChange(newFileList.map(item => {
+                        return {
+                            status: item.status,
+                            response: item.response
+                        }
+                    }));
                 }
             },
             beforeUpload: async (file) => {
@@ -83,7 +89,7 @@ function Uploader({value, maxCount, listType = "picture-card",showUploadList, cr
             }
         }
 
-        return <Upload {...props}>{children}</Upload>
+        return <Upload ref={uploadRef} {...props}>{children}</Upload>
     }
 
     return render();
